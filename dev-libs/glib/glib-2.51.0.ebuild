@@ -116,6 +116,10 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.50.0-external-gdbus-codegen.patch
 
+	# fixes for glib-compile-resources
+	eapply "${FILESDIR}"/0001-glib-compile-resources-Add-generate-phony-targets-fl.patch
+	eapply "${FILESDIR}"/0001-glib-compile-resources-Escape-file-names-in-dependen.patch
+
 	# Leave python shebang alone - handled by python_replicate_script
 	# We could call python_setup and give configure a valid --with-python
 	# arg, but that would mean a build dep on python when USE=utils.
